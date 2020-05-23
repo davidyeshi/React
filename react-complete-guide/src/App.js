@@ -8,9 +8,9 @@ class App extends Component {
   // If state changes then REACT re-renders
   state = {
     persons: [
-      {name: 'David', age:24},
-      {name: 'Mike', age: 21},
-      {name: 'Robert', age: 20}
+      {id:'123123', name: 'David', age:24},
+      {id:'fasf14', name: 'Mike', age: 21},
+      {id:'safawe413', name: 'Robert', age: 20}
     ],
     showPersons: false
   }
@@ -18,20 +18,38 @@ class App extends Component {
   // Change name handler
   // event object is automatically passed by react
   // target has the value that use entered
-  nameChangedHandler = (event) => {
-    this.setState({persons: [
-      {name: 'Yeshi', age:24},
-      {name: event.target.value, age: 21},
-      {name: 'Robert', age: 20}
-    ]});
+  nameChangedHandler = (event, id) => {
+    // get the person index
+    const personIndex = this.state.persons.findIndex(p => p.id === id);
+    console.log(personIndex);
+
+    // find and copy the person
+    const person = {
+      ...this.state.persons[personIndex]
+    }
+
+    // update the name on change
+    person.name = event.target.value;
+
+    // copy the array of persons from the state
+    const persons = [...this.state.persons];
+
+    // set the updated person to the persons array
+    persons[personIndex] = person;
+
+    // update the persons array in the state
+    this.setState({persons: persons});
+    
   }
 
+  // Toggle persons
   togglePersonsHandler = () => {
     // Render dynamically
     const doesShow = this.state.showPersons;
     this.setState({showPersons: !doesShow});
   }
 
+  // Delete a person
   deletePersonHandler = (personIndex) => {
     // copies the full array, so now we are safe to mutate state
     // const persons = [...this.state.persons];
@@ -58,11 +76,11 @@ class App extends Component {
         <div>
           {this.state.persons.map((person, index) => {
             return <Person 
-              key = {index}
+              key = {person.id}
               name = {person.name}
               age = {person.age}
               click = {this.deletePersonHandler.bind(this, index)}
-              changed = {this.nameChangedHandler}
+              changed = {(event) => this.nameChangedHandler(event, person.id)}
               />
           })}
         </div>
