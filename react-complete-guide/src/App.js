@@ -54,17 +54,12 @@ class App extends Component {
       cursor: 'pointer'
     }
 
-    return (
-      <div className="App">
-        <h1>React App</h1>
-        
-        <button 
-        // inline style
-        style = {style}
-        // Alternative way of binding 
-        onClick = {this.togglePersonsHandler}>Toggle Persons</button>
-
-        {this.state.showPersons ?<div>
+    let persons = null;
+    
+    // render persons if showPersons is true
+    if (this.state.showPersons) {
+      persons = (
+        <div>
           <Person 
             name = {this.state.persons[0].name} 
             age = {this.state.persons[0].age} />
@@ -77,7 +72,22 @@ class App extends Component {
           <Person 
             name = {this.state.persons[2].name}  
             age = {this.state.persons[2].age} />
-        </div> : null}
+        </div>
+      )
+    }
+
+    return (
+      <div className="App">
+        <h1>React App</h1>
+        
+        <button 
+        // inline style
+        style = {style}
+        // Alternative way of binding 
+        onClick = {this.togglePersonsHandler}>Toggle Persons</button>
+
+        {persons}
+
       </div>
     );
   }
