@@ -24,6 +24,17 @@ class App extends Component {
     ]});
   }
 
+  // Change name handler
+  // event object is automatically passed by react
+  // target has the value that use entered
+  nameChangedHandler = (event) => {
+    this.setState({persons: [
+      {name: 'Yeshi', age:24},
+      {name: event.target.value, age: 21},
+      {name: 'Robert', age: 20}
+    ]});
+  }
+
   render() {
     return (
       <div className="App">
@@ -39,7 +50,8 @@ class App extends Component {
           name = {this.state.persons[1].name}  
           age = {this.state.persons[1].age}
           // binding method between components (Recommended)
-          click = {this.switchNameHandler.bind(this, 'Minda')}> My hobbies: Racing</Person>
+          click = {this.switchNameHandler.bind(this, 'Minda')}
+          changed = {this.nameChangedHandler}> My hobbies: Racing</Person>
         <Person 
           name = {this.state.persons[2].name}  
           age = {this.state.persons[2].age} />
