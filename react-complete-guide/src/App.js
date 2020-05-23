@@ -15,19 +15,6 @@ class App extends Component {
     showPersons: false
   }
 
-  // method for switching name as an event handler on button click
-  switchNameHandler = (newName) => {
-    console.log('Was Clicked!');
-    this.setState(
-      {
-        persons: [
-          {name: newName, age:24},
-          {name: 'Mike', age: 21},
-          {name: 'Robert', age: 20}
-        ]
-       });
-  }
-
   // Change name handler
   // event object is automatically passed by react
   // target has the value that use entered
@@ -45,6 +32,12 @@ class App extends Component {
     this.setState({showPersons: !doesShow});
   }
 
+  deletePersonHandler = (personIndex) => {
+    const persons = this.state.persons;
+    persons.splice(personIndex, 1);
+    this.setState({persons: persons});
+  }
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -60,11 +53,12 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map(person => {
+          {this.state.persons.map((person, index) => {
             return <Person 
+              key = {index}
               name = {person.name}
               age = {person.age}
-              click = {this.switchNameHandler.bind(this, 'Minda')}
+              click = {this.deletePersonHandler.bind(this, index)}
               changed = {this.nameChangedHandler}
               />
           })}
