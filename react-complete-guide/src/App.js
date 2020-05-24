@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium, {StyleRoot} from 'radium';
-
+import styled from 'styled-components';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -109,9 +108,6 @@ class App extends Component {
     }
 
     return (
-
-      // Using style root for using media queries and key frames
-      <StyleRoot>
         <div className="App">
           <h1>React App</h1>
           <p className = {classes.join(' ')}>This is working</p>
@@ -124,9 +120,8 @@ class App extends Component {
       
           {persons}
         </div>
-      </StyleRoot>
     );
   }
 }
 
-export default Radium(App);
+export default App;
