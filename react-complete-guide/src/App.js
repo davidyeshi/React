@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 
 import Person from './Person/Person';
 
@@ -109,20 +109,22 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <h1>React App</h1>
-        <p className = {classes.join(' ')}>This is working</p>
-        
-        <button 
-        // inline style
-        style = {style}
-        // Alternative way of binding 
-        onClick = {this.togglePersonsHandler}>Toggle Persons</button>
-        
-        
-        {persons}
 
-      </div>
+      // Using style root for using media queries and key frames
+      <StyleRoot>
+        <div className="App">
+          <h1>React App</h1>
+          <p className = {classes.join(' ')}>This is working</p>
+          
+          <button 
+          // inline style
+          style = {style}
+          // Alternative way of binding 
+          onClick = {this.togglePersonsHandler}>Toggle Persons</button>
+      
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
