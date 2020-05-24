@@ -90,16 +90,27 @@ class App extends Component {
       style.backgroundColor = 'red';
     }
 
+    // Dynamically set classes
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length <=1) {
+      classes.push('bold');
+    }
+
     return (
       <div className="App">
         <h1>React App</h1>
+        <p className = {classes.join(' ')}>This is working</p>
         
         <button 
         // inline style
         style = {style}
         // Alternative way of binding 
         onClick = {this.togglePersonsHandler}>Toggle Persons</button>
-
+        
+        
         {persons}
 
       </div>
