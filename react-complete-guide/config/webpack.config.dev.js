@@ -164,6 +164,10 @@ module.exports = {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
+                  // enables css modules
+                  modules: true,
+                  // dynamically generate uniques css class files
+                  localIdentName: '[name]__[local]__[hash:base64:5]'
                 },
               },
               {
