@@ -3,6 +3,20 @@ import './App.css';
 import styled from 'styled-components';
 import Person from './Person/Person';
 
+const StyledButton = styled.button`
+  background-color: green;
+        color: white;
+        font: inherit;
+        border: 1px solid blue;
+        padding: 8px;
+        cursor: pointer;
+        &:hover {
+          background-color: lightgreen;
+          color: black;
+        }
+`;
+
+
 class App extends Component {
 
   // If state changes then REACT re-renders
@@ -112,11 +126,10 @@ class App extends Component {
           <h1>React App</h1>
           <p className = {classes.join(' ')}>This is working</p>
           
-          <button 
-          // inline style
-          style = {style}
+          <StyledButton
           // Alternative way of binding 
-          onClick = {this.togglePersonsHandler}>Toggle Persons</button>
+          onClick = {this.togglePersonsHandler}>Toggle Persons
+          </StyledButton>
       
           {persons}
         </div>
