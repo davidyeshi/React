@@ -61,6 +61,7 @@ class App extends Component {
   render() {
 
     let persons = null;
+    let btnClass = [classes.Button];
     
     // render persons if showPersons is true
     if (this.state.showPersons) {
@@ -78,6 +79,9 @@ class App extends Component {
         </div>
       )
 
+      // Setting the button css class dynamically
+      btnClass.push(classes.Red);
+
     }
 
     // Dynamically set class names dynamically
@@ -94,7 +98,7 @@ class App extends Component {
           <h1>React App</h1>
           <p className = {assignedClasses.join(' ')}>This is working</p>
           
-          <button className={classes.button}
+          <button className={btnClass.join(' ')}
           // Alternative way of binding 
           onClick = {this.togglePersonsHandler}>Toggle Persons
           </button>
