@@ -126,10 +126,10 @@ class App extends Component {
           <h1>React App</h1>
           <p className = {classes.join(' ')}>This is working</p>
           
-          <StyledButton alt={this.state.showPersons}
+          <button className="button"
           // Alternative way of binding 
           onClick = {this.togglePersonsHandler}>Toggle Persons
-          </StyledButton>
+          </button>
       
           {persons}
         </div>
