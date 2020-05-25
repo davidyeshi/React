@@ -1,17 +1,20 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
 
+    // Setup reference
+    const toggleButtonRef = useRef(null);
     // React Hook, executes on every render cycle
     // Can be used for http requests..
     // Only running when props.persons changes
     // To run only one time, pass an empty array
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
-        setTimeout(() => {
-            alert('Saved Data to cloud!');
-        },1000);
+        // setTimeout(() => {
+        //     alert('Saved Data to cloud!');
+        // },1000);
+        toggleButtonRef.current.click();
         // runs clean up based on the condition in the param
         return () => {
             console.log('[Cockpit.js] cleanup useEffect');
@@ -46,6 +49,7 @@ const cockpit = (props) => {
             <h1>React App</h1>
             <p className = {assignedClasses.join(' ')}>This is working</p>
             <button className={btnClass}
+            ref={toggleButtonRef}
             // Alternative way of binding 
             onClick = {props.clicked}>Toggle Persons
             </button>
