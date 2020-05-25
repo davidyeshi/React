@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from './Person/Person';
 
-class Persons extends Component {
+// Pure component executes only if props changes
+class Persons extends PureComponent {
 
     // Lifecycle hook
     // static getDerivedStateFromProps(props, state) {
@@ -11,16 +12,18 @@ class Persons extends Component {
 
     // Lifecycle hook
     // Do we want to update ?
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('[Persons.js] shouldComponentUpdate');
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('[Persons.js] shouldComponentUpdate');
 
-        // if persons don't change then don't render
-         if (nextProps.persons !== this.props.persons) {
-            return true;
-         } else {
-            return false;
-         }
-    }
+    //     // if persons don't change then don't render
+    //      if (nextProps.persons !== this.props.persons || 
+    //          nextProps.changed !== this.props.changed ||
+    //          nextProps.clicked !== this.props.clicked) {
+    //         return true;
+    //      } else {
+    //         return false;
+    //      }
+    // }
 
     // Lifecycle hook
     getSnapshotBeforeUpdate(prevProps, prevState) {
