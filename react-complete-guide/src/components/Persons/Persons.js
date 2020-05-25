@@ -1,7 +1,5 @@
 import React, { PureComponent } from 'react';
 import Person from './Person/Person';
-import AuthContext from '../../context/auth-context';
-
 // Pure component executes only if props changes
 class Persons extends PureComponent {
 
@@ -47,21 +45,16 @@ class Persons extends PureComponent {
     render() {
         console.log('[Person.js] rendering...');
         return (
-            <AuthContext.Consumer>
-            {(context) => this.props.persons.map((person, index) => {
+            this.props.persons.map((person, index) => {
             return (
                 <Person 
                 key = {person.id}
                 name = {person.name}
                 age = {person.age}
-                isAuth = {context.authenticated}
                 click = {this.props.clicked.bind(this, index)}
                 changed = {(event) => this.props.changed(event, person.id)}
-                />);
-        })}
-        </AuthContext.Consumer>
-        );
+                />)
+        }));
     }
 }
-
 export default Persons;
