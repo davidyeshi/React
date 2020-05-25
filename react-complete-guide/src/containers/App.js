@@ -5,6 +5,28 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 
+  // 1st Lifecycle hook
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+  }
+
+  // 2nd Lifecycle hook
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  // 4th Lifecycle hook
+  // can be used for http request
+  componentDidMount() {
+    console.log('[App.js] componentDidMount')
+  }
+
+  componentWillMount() {
+    console.log('[App.js] componentWillMount')
+  }
+
   // If state changes then REACT re-renders
   state = {
     persons: [
