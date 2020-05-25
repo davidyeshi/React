@@ -44,7 +44,8 @@ class App extends Component {
       {id:'safawe413', name: 'Robert', age: 20}
     ],
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   }
 
   // Change name handler
@@ -70,8 +71,11 @@ class App extends Component {
     persons[personIndex] = person;
 
     // update the persons array in the state
-    this.setState({persons: persons});
-    
+    this.setState((prevState, props) => {
+      return{
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1};
+      });
   }
 
   // Toggle persons
