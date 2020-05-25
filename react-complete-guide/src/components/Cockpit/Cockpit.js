@@ -11,8 +11,19 @@ const cockpit = (props) => {
         console.log('[Cockpit.js] useEffect');
         setTimeout(() => {
             alert('Saved Data to cloud!');
-        },1000)
-    }, [])
+        },1000);
+        // runs clean up based on the condition in the param
+        return () => {
+            console.log('[Cockpit.js] cleanup useEffect');
+        }
+    }, []);
+
+    useEffect(() => {
+        console.log('[Cockpit.js] 2nd useEffect');
+        return () => {
+            console.log('[Cockpit.js] 2nd cleanup useEffect')
+        }
+    });
 
     // Dynamically set class names dynamically
     const assignedClasses = [];

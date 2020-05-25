@@ -28,6 +28,12 @@ class Persons extends Component {
         console.log('[Persons.js] componentDidUpdate');
     }
 
+    // Lifecycle hook
+    // for running code right before component is removed for cleanup
+    componentWillMount() {
+        console.log('[Persons.js] componentWillMount');
+    }
+
     render() {
         console.log('[Person.js] rendering...');
         return (
