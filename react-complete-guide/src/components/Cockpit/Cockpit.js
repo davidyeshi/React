@@ -1,7 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
+
+    // React Hook, executes on every render cycle
+    // Can be used for http requests..
+    // Only running when props.persons changes
+    // To run only one time, pass an empty array
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect');
+        setTimeout(() => {
+            alert('Saved Data to cloud!');
+        },1000)
+    }, [])
+
     // Dynamically set class names dynamically
     const assignedClasses = [];
     let btnClass = '';
