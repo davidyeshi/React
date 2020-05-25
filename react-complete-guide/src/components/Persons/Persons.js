@@ -13,7 +13,13 @@ class Persons extends Component {
     // Do we want to update ?
     shouldComponentUpdate(nextProps, nextState) {
         console.log('[Persons.js] shouldComponentUpdate');
-        return true;
+
+        // if persons don't change then don't render
+         if (nextProps.persons !== this.props.persons) {
+            return true;
+         } else {
+            return false;
+         }
     }
 
     // Lifecycle hook

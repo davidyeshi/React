@@ -15,14 +15,14 @@ const cockpit = (props) => {
         // runs clean up based on the condition in the param
         return () => {
             console.log('[Cockpit.js] cleanup useEffect');
-        }
+        };
     }, []);
 
     useEffect(() => {
         console.log('[Cockpit.js] 2nd useEffect');
         return () => {
             console.log('[Cockpit.js] 2nd cleanup useEffect')
-        }
+        };
     });
 
     // Dynamically set class names dynamically
