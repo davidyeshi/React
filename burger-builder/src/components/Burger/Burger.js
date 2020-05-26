@@ -9,7 +9,7 @@ const burger = (props) => {
         .map(igKey => {
             // Mapping through the number of ingredients
             return [...Array(props.ingredients[igKey])].map((_, i) => {
-                return <BurgerIngredient key={igKey+1} type = {igKey}/>
+                return <BurgerIngredient key={igKey+i} type = {igKey}/>
             })
         })
         // flatten arrays to create one array
@@ -21,7 +21,7 @@ const burger = (props) => {
     if (transformedIngredients.length === 0) {
         transformedIngredients = <p>Please start adding ingredients!</p>
     }
-    
+
     return(
         <div className={classes.Burger}>
             <BurgerIngredient type="bread-top"/>
