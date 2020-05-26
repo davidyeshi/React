@@ -21,7 +21,8 @@ class BurgerBuilder extends Component {
             meat:0 
         },
         totalPrice: 4,
-        purchaseable: false
+        purchaseable: false,
+        purchasing: false
     }
 
     addIngredientHandler = (type) => {
@@ -68,6 +69,12 @@ class BurgerBuilder extends Component {
         this.setState({purchaseable: sum > 0});
     }
 
+    // if method is triggered through event then we have to use the
+    // arraw functions, contains the state or contents of this
+    purchaseHandler = () => {
+        this.setState({purchasing: true});
+    }
+
     render() {
         const disabledInfo = {
             ...this.state.ingredients
@@ -79,7 +86,7 @@ class BurgerBuilder extends Component {
 
         return(
             <>
-                <Modal>
+                <Modal show={this.state.purchasing}>
                     <OrderSummary ingredients = {this.state.ingredients}/>
                 </Modal>
                 <Burger ingredients={this.state.ingredients}/>
@@ -89,6 +96,7 @@ class BurgerBuilder extends Component {
                     ingredientRemoved={this.removeIngredientHandler}
                     price = {this.state.totalPrice}
                     purchaseable={this.state.purchaseable}
+                    ordered={this.purchaseHandler}
                 />
             </>
         );
