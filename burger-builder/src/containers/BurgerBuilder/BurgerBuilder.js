@@ -72,7 +72,8 @@ class BurgerBuilder extends Component {
     // if method is triggered through event then we have to use the
     // arraw functions, contains the state or contents of this
     purchaseHandler = () => {
-        this.setState({purchasing: true});
+        const purchasing = this.state.purchasing;
+        this.setState({purchasing: !purchasing});
     }
 
     render() {
@@ -86,7 +87,7 @@ class BurgerBuilder extends Component {
 
         return(
             <>
-                <Modal show={this.state.purchasing}>
+                <Modal modalClosed={this.purchaseHandler} show={this.state.purchasing}>
                     <OrderSummary ingredients = {this.state.ingredients}/>
                 </Modal>
                 <Burger ingredients={this.state.ingredients}/>
