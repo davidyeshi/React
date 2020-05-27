@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import axios from 'axios';
 
 // Setting base url
-axios.defaults.baseURL = "https://jsonplaceholder.typicode.com"; 
+axios.defaults.baseURL = "https://jsonplaceholder.cypress.io/"; 
 // axios.defaults.headers.common['Authorization'] = 'AUTH_TOKEN';
 // Intercepts every request config
 axios.interceptors.request.use(request => {

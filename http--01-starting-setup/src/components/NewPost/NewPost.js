@@ -19,6 +19,10 @@ class NewPost extends Component {
         axios.post('/posts', post)
             .then(response => {
                 console.log(response);
+            })
+            .catch(error => {
+                console.log('postHandler failed');
+                console.log(error);
             });
     };
     render () {
