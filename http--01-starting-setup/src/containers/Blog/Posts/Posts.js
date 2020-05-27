@@ -14,7 +14,7 @@ class Posts extends Component {
         axios.get('/posts')
             .then((response)=>{
                 // storing only four post
-                const posts = response.data.slice(0, 8);
+                const posts = response.data.slice(0, 4);
                 // Adding an author key since our dummy data doesn't have it
                 const updatedPosts = posts.map(post => {
                     return {
