@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
+import {Route, Link, Switch, Redirect } from 'react-router-dom';
 
 import Courses from './containers/Courses/Courses';
+
 import Users from './containers/Users/Users';
 
 class App extends Component {
   render () {
+    const listStyle = {
+      'listStyle': 'none',
+      'margin': '0',
+      'padding': '0',
+      'width': '100%',
+      'textAlign': 'center'
+    }
+
     return (
+      <div>
       <div className="App">
         <ol style={{textAlign: 'left'}}>
           <li>Add Routes to load "Users" and "Courses" on different pages (by entering a URL, without Links)</li>
@@ -17,6 +28,19 @@ class App extends Component {
           <li>Add a 404 error page and render it for any unknown routes</li>
           <li>Redirect requests to /all-courses to /courses (=> Your "Courses" page)</li>
         </ol>
+      </div>
+      <nav>
+        <ul style={listStyle}>
+          <li><Link to='/users'>Users</Link></li>
+          <li><Link to='/courses'>Courses</Link></li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route path='/users' component={Users}/>
+        <Route path='/courses' component={Courses}/>
+        <Redirect path='/all-courses' to='/courses'/>
+        <Route render = {() => <h1>404 Error: Page Not Found</h1>}/>
+      </Switch>
       </div>
     );
   }
