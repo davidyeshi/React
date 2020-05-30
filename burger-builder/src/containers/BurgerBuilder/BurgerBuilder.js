@@ -104,7 +104,17 @@ class BurgerBuilder extends Component {
         //     deliveryMethod: 'fastest'
         // };
 
-        this.props.history.push('/checkout');    
+        const queryParams = [];
+        for (let i in this.state.ingredients) {
+            // encode URI helps in passing to url
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i])); 
+        }
+
+        const queryString = queryParams.join('&');
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryString
+        });    
         // axios.post('/orders.json', order)
         //     .then(response => {
         //         this.setState({loading: false, purchasing: false})
