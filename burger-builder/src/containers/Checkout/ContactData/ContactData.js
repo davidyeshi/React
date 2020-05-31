@@ -82,11 +82,12 @@ class ContactData extends Component {
                 elementType: 'select',
                 elementConfig: {
                     options: [
-                        {value: 'fastest', displayValue: 'Fastest'},
-                        {value: 'cheapest', displayValue: 'Cheapest'}
+                        {value: 'cheapest', displayValue: 'Cheapest'},
+                        {value: 'fastest', displayValue: 'Fastest'}
                     ]
                 },
-                value: '',
+                value: 'cheapest',
+                validation: {},
                 valid: true
             }
         },
@@ -96,6 +97,9 @@ class ContactData extends Component {
 
     checkValidity(value, rules) {
         let isValid = true;
+        if (!rules) {
+            return true;
+        }
 
         if(rules.required) {
             isValid = value.trim() !== '' && isValid;
