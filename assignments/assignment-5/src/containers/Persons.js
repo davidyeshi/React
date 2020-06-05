@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Person from '../components/Person/Person';
 import AddPerson from '../components/AddPerson/AddPerson';
 
+import {connect} from 'react-redux';
+
 class Persons extends Component {
     state = {
         persons: []
@@ -28,7 +30,7 @@ class Persons extends Component {
     render () {
         return (
             <div>
-                <AddPerson personAdded={this.personAddedHandler} />
+                <AddPerson personAdded={this.props.onPersonAdd} />
                 {this.state.persons.map(person => (
                     <Person 
                         key={person.id}
@@ -41,4 +43,17 @@ class Persons extends Component {
     }
 }
 
-export default Persons;
+const mapStateToProps = state => {
+    return {
+        persons: state.persons
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onPersonAdd: () => dispatch({type: 'ADD_PERSON'}),
+        onPersonDelete: (personId) => dispatch({type: 'DELETE_PERSON', id: personId}) 
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Persons);
