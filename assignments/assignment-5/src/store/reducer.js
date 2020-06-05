@@ -16,7 +16,12 @@ const reducer = (state = initialState, action) => {
         }
     }
     if(action.type === 'DELETE_PERSON') {
-
+        
+        const updatedArray = state.persons.filter((person) => person.id !== action.id);
+        return {
+            ...state,
+            persons: updatedArray
+        }
     }
     return state;
 }

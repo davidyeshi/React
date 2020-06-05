@@ -31,12 +31,12 @@ class Persons extends Component {
         return (
             <div>
                 <AddPerson personAdded={this.props.onPersonAdd} />
-                {this.state.persons.map(person => (
+                {this.props.persons.map(person => (
                     <Person 
                         key={person.id}
                         name={person.name} 
                         age={person.age} 
-                        clicked={() => this.personDeletedHandler(person.id)}/>
+                        clicked={() => this.props.onPersonDelete(person.id)}/>
                 ))}
             </div>
         );
