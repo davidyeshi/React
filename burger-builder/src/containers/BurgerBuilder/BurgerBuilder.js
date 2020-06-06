@@ -49,18 +49,19 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () => {
         
-        const queryParams = [];
-        for (let i in this.state.ingredients) {
-            // encode URI helps in passing to url
-            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i])); 
-        }
+        // No longer needed since we are passing ingredients with redux
+        // const queryParams = [];
+        // for (let i in this.state.ingredients) {
+        //     // encode URI helps in passing to url
+        //     queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i])); 
+        // }
 
-        queryParams.push('price=' + this.props.price);
+        // queryParams.push('price=' + this.props.price);
 
-        const queryString = queryParams.join('&');
+        // const queryString = queryParams.join('&');
         this.props.history.push({
             pathname: '/checkout',
-            search: '?' + queryString
+            // search: '?' + queryString
         });    
     }
 
