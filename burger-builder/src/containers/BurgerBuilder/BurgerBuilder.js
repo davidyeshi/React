@@ -26,13 +26,13 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount() {
-        axios.get('/ingredients.json')
-            .then(res => {
-                this.setState({ingredients: res.data});
-            })
-            .catch(err => {
-                this.setState({error:true})
-            })
+        // axios.get('/ingredients.json')
+        //     .then(res => {
+        //         this.setState({ingredients: res.data});
+        //     })
+        //     .catch(err => {
+        //         this.setState({error:true})
+        //     })
     }
     addIngredientHandler = (type) => {
         let count = this.state.ingredients[type];
