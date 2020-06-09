@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
@@ -35,16 +35,19 @@ class Checkout extends Component {
     };
 
     render() {
-        console.log("Checkout Page");
-        return (
-            <div>
-                <CheckoutSummary 
-                    continueCheckout = {this.continueCheckoutHandler}
-                    cancelCheckout = {this.cancelCheckoutHandler}
-                    ingredients={this.props.ings}/>
-                <Route path={this.props.match.path + '/contact-data'} component={ContactData}/>
-            </div>
-        );
+        let summary = <Redirect to="/"/>
+        if (this.props.ings) {
+            summary = (
+                <div>
+                    <CheckoutSummary 
+                        continueCheckout = {this.continueCheckoutHandler}
+                        cancelCheckout = {this.cancelCheckoutHandler}
+                        ingredients={this.props.ings}/>
+                    <Route path={this.props.match.path + '/contact-data'} component={ContactData}/>
+                </div>
+            ) 
+        }
+        return summary;
     }
 }
 
