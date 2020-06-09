@@ -23,7 +23,7 @@ export const setIngredients = (ingredients) => {
     };
 }
 
-export const fetchIngredientsFailder = () => {
+export const fetchIngredientsFaild = () => {
     return {
         type: actionTypes.FETCH_INGREDIENTS_FAILED
     }
@@ -33,10 +33,11 @@ export const initIngredients = () => {
     return dispatch => {
         axios.get('/ingredients.json')
             .then(res => {
+                console.log("[burgerBuilderActions] ");
                 dispatch(setIngredients(res.data));
             })
             .catch(err => {
-                dispatch(fetchIngredientsFailder());
+                dispatch(fetchIngredientsFaild());
             })
     };
 }

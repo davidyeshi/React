@@ -17,10 +17,10 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
+        console.log("ComponentDidMount:::"+this.props);
         this.props.onInitIngredients();
     }
-    
+
     updatePurchaseState(ingredients) {
         const sum = Object.keys(ingredients).map(igKey => {
             return ingredients[igKey];

@@ -9,7 +9,7 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import burgerBuilderReducer from './store/reducers/burderBuilder';
 import thunk from 'redux-thunk'; // middleware
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(burgerBuilderReducer,composeEnhancers(
   applyMiddleware(thunk)
