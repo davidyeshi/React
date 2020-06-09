@@ -12,8 +12,8 @@ export const storeResult = (result) => {
     // async with redux thunk
     return (dispatch, getState) => {
         setTimeout(()=> {
-            // const oldCounter = getState().ctr.counter;
-            // console.log(oldCounter);
+            const oldCounter = getState().ctr.counter;
+            console.log(oldCounter);
             dispatch(saveResult(result))
         },2000);
     }
