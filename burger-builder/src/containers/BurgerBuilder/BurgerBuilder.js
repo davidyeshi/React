@@ -36,8 +36,12 @@ class BurgerBuilder extends Component {
     // if method is triggered through event then we have to use the
     // arraw functions, contains the state or contents of this
     togglePurchaseHandler = () => {
-        const purchasing = this.state.purchasing;
-        this.setState({purchasing: !purchasing});
+        if (this.props.isAuth) {
+            const purchasing = this.state.purchasing;
+            this.setState({purchasing: !purchasing});
+        } else {
+            this.props.history.push('/auth');
+        }
     }
 
     purchaseContinueHandler = () => {
@@ -79,6 +83,7 @@ class BurgerBuilder extends Component {
                         ingredientRemoved={this.props.onDeleteIngredient}
                         price = {this.props.price}
                         purchaseable={this.updatePurchaseState(this.props.ings)}
+                        isAuth={this.props.isAuth}
                         ordered={this.togglePurchaseHandler}
                     />
                 </>
@@ -108,7 +113,8 @@ const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingredients,
         price: state.burgerBuilder.totalPrice,
-        error: state.burgerBuilder.error
+        error: state.burgerBuilder.error,
+        isAuth: state.auth.token !== null
     };
 }
 
