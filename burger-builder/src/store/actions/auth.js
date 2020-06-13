@@ -23,7 +23,7 @@ export const authFail = (error) => {
     };
 };
 
-export const auth = (email, password) => {
+export const auth = (email, password, isSignUp) => {
     return dispatch => {
         dispatch(authStart());
         
@@ -31,8 +31,13 @@ export const auth = (email, password) => {
             email: 'xyz@gmail.com',
             password: 'password',
             returnSecureToken: true
+        };
+        
+        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCn2m8-ylbVFFmy7BZe89kVH3QX9j0uKVk';
+        if(!isSignUp) {
+            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCn2m8-ylbVFFmy7BZe89kVH3QX9j0uKVk';
         }
-        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCn2m8-ylbVFFmy7BZe89kVH3QX9j0uKVk', authData)
+        axios.post(url, authData)
             .then(res => {
                 console.log(res);
                 dispatch(authSuccess(res.data));
